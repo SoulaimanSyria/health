@@ -1,0 +1,22 @@
+<mat-toolbar><button class="right"  (click)="logOut()" color="primary" >LogOut</button></mat-toolbar>
+<mat-tab-group *ngIf="loggedIn">
+        
+  <mat-tab label="Home">        
+      <mat-tab-group>
+          <mat-tab label="Clinics" *ngIf="isAdmin">
+              <app-show-clinics>
+
+              </app-show-clinics>
+          </mat-tab>
+          <mat-tab label="Doctors" *ngIf="isAdmin">
+              <app-show-doctors></app-show-doctors>
+            </mat-tab>
+        <mat-tab label="Welcome Doctor" *ngIf="!isAdmin">
+            <h3>Hello DR. {{doctorName}}, tables of doctors and clinics are just allowed for admin</h3>        
+        </mat-tab>    
+        <mat-tab label="Nope!" *ngIf="!loggedIn">
+                <h3>You are logged out</h3>        
+            </mat-tab>  
+      </mat-tab-group>
+  </mat-tab>
+</mat-tab-group>

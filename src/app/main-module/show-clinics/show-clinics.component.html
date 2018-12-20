@@ -1,0 +1,30 @@
+<div class="example-button-row">
+  <button mat-raised-button color="primary" (click)="addClinic()">Add Clinic</button>
+</div>
+<mat-table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.clinicName}} </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.clinicDescription }} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > Actions </mat-header-cell>
+          <mat-cell *matCellDef="let row"> 
+              <button matTooltip="Edit Clinic" mat-icon-button color="primary" (click)="editClinic(row)">
+                  <mat-icon>edit</mat-icon>
+                </button>  
+                <button matTooltip="Edit Clinic" mat-icon-button color="primary" (click)="deleteClinic(row.clinicId)">
+                    <mat-icon>delete</mat-icon>
+                  </button> 
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row href="#google" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  

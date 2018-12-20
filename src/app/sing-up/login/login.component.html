@@ -1,0 +1,27 @@
+<mat-card class="login-card">
+  <mat-card-content>
+
+    <mat-toolbar>
+      <span>Login</span>
+      <span class="spacer"></span>
+      <div class="button-row">
+          <button (click)="register()" mat-button color="primary">Register Doctor</button>
+        </div>
+    </mat-toolbar>
+    
+    <br>
+  <form #userForm="ngForm" class="form">
+    <mat-form-field >
+        <input matInput name="usernamee" placeholder="User Name" [(ngModel)]="username" #usernamee="ngModel" required>
+        <mat-error *ngIf="usernamee.errors?.required">Username is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [type]="hide? 'password':'password'" name="passwordd" placeholder="Password" [(ngModel)]="password" #passwordd="ngModel" required>
+      <mat-error *ngIf="passwordd.errors?.required">Password is required!</mat-error>
+    </mat-form-field>
+    <div class="button-row">
+    <button class="right"  (click)="login()" [disabled]="!userForm.valid" color="primary" mat-fab>LogIn</button>
+  </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,14 @@
+<form #clinicForm="ngForm" class="form">
+    <mat-form-field >
+        <input matInput name="cName" placeholder="Clinic Name" [(ngModel)]="model.clinicName" #cName="ngModel" required>
+        <mat-error *ngIf="cName.errors?.required">Clinic name is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="desc" placeholder="Description" [(ngModel)]="model.clinicDescription" #desc="ngModel" required>
+      <mat-error *ngIf="desc.errors?.required">Description is required!</mat-error>
+    </mat-form-field>
+    <div class="button-row">
+    <button class="right"  (click)="add()" [disabled]="!clinicForm.valid" color="primary" mat-fab>Add</button>
+    <button class="right"  (click)="cancel()" color="primary" mat-fab>Cancel</button>
+  </div>
+    </form>

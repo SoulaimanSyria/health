@@ -1,0 +1,30 @@
+  <mat-table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="uName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> User Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.userName }} </mat-cell>
+        </ng-container>
+      <ng-container matColumnDef="fName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > 
+              
+              <input matInput placeholder="First Name" name="fnamefileter" [(ngModel)]="fNameFilter" (keyup)="applyFilterFName()" style="float:left; display:inline; width: 49%;">  
+              <mat-icon>search</mat-icon>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header > 
+                
+                <input matInput placeholder="Last Name" name="lnamefileter" [(ngModel)]="lNameFilter" (keyup)="applyFilterFName()" style="float:left; display:inline; width: 49%;">    
+                <mat-icon>search</mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
+          </ng-container>
+      <ng-container matColumnDef="cName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Clinic Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.clinicName }} </mat-cell>
+        </ng-container>   
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row href="#google" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    

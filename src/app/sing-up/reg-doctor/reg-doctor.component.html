@@ -1,0 +1,49 @@
+<mat-card class="register-card">
+    <mat-card-content>
+  
+      <mat-toolbar>
+        <span>Register</span>
+
+      </mat-toolbar>
+      
+      <br>
+    <form #doctorForm="ngForm" class="form">
+      <mat-form-field >
+          <input matInput name="usernamee" placeholder="User Name" [(ngModel)]="model.userName" #usernamee="ngModel" required>
+          <mat-error *ngIf="usernamee.errors?.required">Username is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field >
+          <input matInput name="fName" placeholder="First Name" [(ngModel)]="model.firstName" #fName="ngModel" required>
+          <mat-error *ngIf="fName.errors?.required">First Name is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field >
+          <input matInput name="lName" placeholder="Last Name" [(ngModel)]="model.lastName" #lName="ngModel" required>
+          <mat-error *ngIf="lName.errors?.required">Last Name is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-select placeholder="Clinic" [(ngModel)]="model.clinicId" name="clinicc" #clinicc>
+            <mat-option *ngFor="let clin of clinics" [value]="clin.clinicId">
+              {{clin.clinicName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="clinicc.errors?.required">Clinic is required!</mat-error>
+        </mat-form-field>
+      <mat-form-field >
+          <input matInput type="email" name="emal" placeholder="Email" [(ngModel)]="model.email" #emal="ngModel" email required>
+          <mat-error *ngIf="lName.errors?.required">Email is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [type]="hide? 'password':'password'" name="passwordFirst" placeholder="Password" [(ngModel)]="model.password" #passwordFirst="ngModel" required>
+        <mat-error *ngIf="passwordFirst.errors?.required">Password is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput [type]="hide? 'password':'password'" name="passwordConfirm" (keyup)="matchFunc()" placeholder="Password" [(ngModel)]="confirmationPassword" #passwordConfirm="ngModel" required>
+          <mat-error *ngIf="passwordConfirm.errors?.required">Password confirmation is required!</mat-error>
+        </mat-form-field>
+        <span *ngIf="!match" style="color: red">Not matched passwords!</span>
+      <div class="button-row">
+      <button class="right"  (click)="register()" [disabled]="!doctorForm.valid || !matchFuncd()" color="primary" mat-fab>Register</button>
+    </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
