@@ -6,5 +6,5 @@ export const APP_CONFIG: InjectionToken<AppConfig>
   = new InjectionToken('app.config');
 
 export const AppConfiguration: AppConfig = {
-  apiBaseUrl: 'https://www.awbhealthsystem.somee.com/',
+  apiBaseUrl: 'http://www.awbhealthsystem.somee.com/',
 }
